@@ -1,3 +1,41 @@
 body {
-    background-color: skyblue;
+    background-color: rgb(43, 45, 46);
+    color: white;
+}
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 5;
+    background-color: rgb(45 47 49) !important;
+}
+
+.navbar-brand {
+    padding-top: var(--bs-navbar-brand-padding-y);
+    padding-bottom: var(--bs-navbar-brand-padding-y);
+    margin-right: var(--bs-navbar-brand-margin-end);
+    font-size: 1.2rem;
+    color: rgb(187, 7, 7);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: rgb(150, 5, 5);
+}
+
+a {
+    text-decoration: none;  
+}
+
+li{
+    list-style-type: none;
+}
+
+.navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    flex-direction: row;
+    gap: 2rem;
 }
