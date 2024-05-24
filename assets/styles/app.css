@@ -1,4 +1,14 @@
 body {
     background-color: rgb(43, 45, 46);
+    /* background-image: url('../images/background.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     color: white;
+}
+
+/* Navbar */
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: rgb(60 114 168 / 0%) !important;
 }
