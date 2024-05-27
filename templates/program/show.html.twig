@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Wild Series {% endblock %}
+{% block title %} Series # {{ program.id }} {% endblock %}
 
 {% block body %}
-<h1>Programe {{id}}<h1>
+    <article>
+        <img src="{{ program.poster }} "alt="{{ program.title }}">
+        <h1>{{ program.title }}<h1>
+        <p>{{ program.synopsis }}</p>
+        <p>Categorie : {{ program.category.name }}</p>
+    </article>
+
+    <a href="{{ path('program_index') }}">
+        Retour à la liste des programes.
+    </a>
 {% endblock %}
