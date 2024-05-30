@@ -33,7 +33,7 @@ class CategoryController extends AbstractController
             );
         }
 
-        $programs = $programRepository->findBy(['category' => $category],['id' => 'DESC'], 3);
+        $programs = $programRepository->findBy(['category' => $category],['id' => 'ASC'], 5);
 
         if (!$programs) {
             throw $this->createNotFoundException(

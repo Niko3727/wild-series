@@ -3,12 +3,20 @@
 {% block title %} Series # {{ program.id }} {% endblock %}
 
 {% block body %}
+
     <article>
-        <img src="{{ program.poster }} "alt="{{ program.title }}">
+        <img src="{{ program.poster }} "alt="{{ program.title }} ">
         <h1>{{ program.title }}<h1>
         <p>{{ program.synopsis }}</p>
+        
         <p>Categorie : {{ program.category.name }}</p>
     </article>
+    
+    {% for season in program.seasons %}
+        <p>saison{{ season.number }} Année de diffusion :{{ season.year }}<p>
+        <p>{{ season.description }}<p>
+        <p><a href="{{ path("program_season_show", { seasonId: season.id, programId: program.id }) }}">Liste des épisodes</a></p>
+        {% endfor %}
 
     <a href="{{ path('program_index') }}">
         Retour à la liste des programes.
