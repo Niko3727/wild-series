@@ -4,20 +4,13 @@
 
 {% block body %}
 
-    {# <article>
-        <h1>{{ program.title }}<h1>
-        <p>{{ program.synopsis }}</p>
-        
-        <p>Categorie : {{ program.category.name }}</p>
-    </article> #}
     
     {% for episode in season.episodes %}
-        <p>saison{{ episode.number }}<p>
-        <p>{{ episode.synopsis }}<p>
-        <p>{{ episode.title }}<p>
+        <p>Titre :  {{ episode.title }} <p>
+        <p>Description : {{ episode.synopsis }} <p>
         {% endfor %}
 
-    <a href="{{ path('program_index') }}">
-        Retour à la liste des programes.
+    <a href="{{ path("program_show", { id: program.id }) }}">
+        Retour à la liste des saisons.
     </a>
 {% endblock %}

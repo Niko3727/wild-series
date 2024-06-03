@@ -3,6 +3,8 @@
 namespace App\Controller; 
 
 use App\Entity\Program;
+use App\Entity\Season;
+use App\Entity\Episode;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route; //Cette ligne permet d'afficher la route. 
@@ -44,9 +46,9 @@ class ProgramController extends AbstractController
     {
         $program = $programRepository->findOneBy(['id' => $programId]);
         $season = $seasonRepository->findOneBy(['id' => $seasonId, 'program' => $program]);
-        $episodes = $episodeRepository->findBy(['season' => $season]);
+        $episode = $episodeRepository->findBy(['season' => $season]);
 
-        return $this->render ('program/season_show.html.twig', ['program' => $program, 'season' => $season, 'episodes' => $episodes]
+        return $this->render ('program/season_show.html.twig', ['program' => $program, 'season' => $season, 'episode' => $episode]
         );
 
     }
