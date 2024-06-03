@@ -7,20 +7,31 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
+use Faker\Factory;
+
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
 
-        $episode = new Episode();
-        $episode->setTitle('Agent double');
-        $episode->setSynopsis("Sydney Bristow est une jeune étudiante.");
-        $episode->setNumber(1);
-        $episode->setSeason($this->getReference('season1_Alias'));
-        $manager->persist($episode);
+        $faker = Factory::create();
+        for($i = 1; $i <= 10; $i++) {
+            $programReference = $this->getReference('program_' . $i);
+          for($j = 1; $j <= 5; $j++ ) {
+            $seasonReference = $this->getReference('season_' . $i . '_' . $j);
+            for($k = 1; $k <= 10; $k++ ) {
+            $episode = new Episode(); 
+            $episode->setTitle($faker->words(3, true)); 
+            $episode->setSynopsis($faker->paragraph(2, true));
+            $episode->setNumber($k); 
+            $episode->setSeason($seasonReference);
+            $manager->persist($episode);
+            } 
+            
 
+            }  
+        }   
         $manager->flush();
-
     }
     public function getDependencies()
     {
