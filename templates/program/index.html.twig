@@ -4,17 +4,21 @@
 
 {% block body %}
 <h1> Toutes les séries de la tables program :</h1>
+
 {% for program in programs %}
-    <div>
-        <h2>{{loop.index}} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+    <article>
+        <div class="line"><h2>{{ program.title }}</h2><h2 class="cat">{{ program.category.name }} </h2></div>
         <p>{{ program.synopsis }}</p>
-        <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
-    </div>
+        <a class="fiche" href="{{ path("program_show", { program: program.id }) }}">Voir la fiche</a>
+    
 {% else %}
     Aucune série trouvé.
+    </article>
     {% endfor %}
 
-    <a href="{{path('app_index') }}">
+    <a class="retour" href="{{path('app_index') }}">
         retour à l'accueil
         </a>
 {% endblock %}
+
+{# {{loop.index}} #}

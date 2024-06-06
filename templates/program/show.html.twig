@@ -15,7 +15,7 @@
     {% for season in program.seasons %}
         <p>saison{{ season.number }} Année de diffusion :{{ season.year }}<p>
         <p>{{ season.description }}<p>
-        <p><a href="{{ path("program_season_show", { seasonId: season.id, programId: program.id }) }}">Liste des épisodes</a></p>
+        <p><a href="{{ path("program_season_show", { season: season.id, program: program.id }) }}">Liste des épisodes de la saison :{{season.number}}</a></p>
         {% endfor %}
 
     <a href="{{ path('program_index') }}">

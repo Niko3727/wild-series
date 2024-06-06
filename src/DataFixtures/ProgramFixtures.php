@@ -21,7 +21,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program = new Program();
             $program->setTitle($faker->words(3, true)); 
             $program->setSynopsis($faker->paragraphs(2, true));
-            $program->setPoster($faker->imageurl(500, 500, 'nature'));
+            $program->setPoster($faker->imageurl(500, 500, 'Affiche'));
             $program->setCategory($this->getReference('category_' . $faker->numberBetween(1, 5)));
             $manager->persist($program);
 
