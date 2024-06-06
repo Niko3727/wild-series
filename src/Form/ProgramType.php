@@ -21,7 +21,7 @@ class ProgramType extends AbstractType
             ->add('poster')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-'choice_label' => 'id',
+'choice_label' => 'name',
             ])
         ;
     }
