@@ -6,7 +6,9 @@
 <h1> Toutes les categories :</h1>
 {% for category in categorys %}
     <div>
-        <h2><a href="{{ path("category_show", { categoryName: category.name }) }}">{{ category.name }}</a>
+        <h2><a href="{{ path("category_show", { category: category.id }) }}">{{ category.name }} </a>
+        <p><a href="{{ path('category_edit', {'id': category.id}) }}">edit</p></a>
+ {{ include('category/_delete_form.html.twig') }}</a>
 </h2>
     </div>
 {% else %}
