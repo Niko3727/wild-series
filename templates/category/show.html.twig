@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{% for program in programs %}
+{% for program in category.programs %}
     <div>
         <h2>{{loop.index}} / {{ program.title }}</h2>
         <p>{{ program.synopsis }}</p>
