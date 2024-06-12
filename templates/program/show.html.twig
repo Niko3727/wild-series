@@ -9,7 +9,7 @@
         <h1>{{ program.title }}<h1>
         <p>{{ program.synopsis }}</p>
         
-        <p>Categorie : {{ program.category.name }}</p>
+        <p>Categorie : {{ program.category.name|default('Catégorie non disponible') }}</p>
         
     </article>
     
@@ -17,9 +17,8 @@
         <p>saison{{ season.number }} Année de diffusion :{{ season.year }}<p>
         <p>{{ season.description }}<p>
         <p><a href="{{ path("program_season_show", { season: season.id, program: program.id }) }}">Liste des épisodes de la saison :{{season.number}}</a>
-    
 
-    {# {{ include('program/delete_form.html.twig') }}#}</p> 
+        
         {% endfor %}
 
     <a href="{{ path('program_index') }}">

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EpisodeRepository::class)]
 class Episode
@@ -17,12 +18,15 @@ class Episode
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
     private ?string $synopsis = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
     private ?int $number = null;
 
     #[ORM\ManyToOne(inversedBy: 'episodes')]

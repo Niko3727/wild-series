@@ -6,6 +6,7 @@ use App\Repository\SeasonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SeasonRepository::class)]
 class Season
@@ -16,12 +17,15 @@ class Season
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
     private ?int $number = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
     private ?int $year = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'seasons')]

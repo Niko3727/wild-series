@@ -88,9 +88,9 @@ h1 {
 }
 
 h2 {
-    font-size: 1;
+    font-size: 1.5rem;
     color: rgb(215 24 24 / 65%);
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 a {
@@ -98,7 +98,7 @@ a {
 }
 
 article {    /* background-color: #3a3a31; */
-    height: 20rem;
+    height: 18rem;
     width: 50rem;
     background-color: rgba(19, 20, 20, 0.658);
 
@@ -108,11 +108,12 @@ article {    /* background-color: #3a3a31; */
 .fiche {
     display: flex;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .cat {
 display: flex;
+font-size: 1rem;
 }
 
 .line {
@@ -129,5 +130,60 @@ display: flex;
 .retour{
     display: flex;
     justify-content: center;
-    margin-top: 4rem;
+    margin-top: 9rem;
+}
+
+button.btn {
+    color: #a50606;
+    margin-left: 44rem;
+    margin-top: -7rem;
+}
+
+.edit {
+    color: #198754;
+    margin-left: 45.5rem;
+    margin-top: -5rem;
+}
+
+.edit-1 {
+    color: #198754;
+    margin-left: 45.5rem;
+}
+
+.category {
+    color: azure;
+    margin-left: 22rem;
+}
+
+.category_background {
+    background-color: black;
+}
+
+img, svg {
+    height: 100px;
+    width: 75px;
+}
+
+.trailer {
+    color: rgb(248, 194, 45);
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.block {
+    margin-top: -0.5rem;
+}
+
+.mod {
+    margin-left: 45.5rem;
+    margin-top: -1rem;
+}
+
+.synopsis {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.links {
+    margin-top: 1.2rem;
 }
