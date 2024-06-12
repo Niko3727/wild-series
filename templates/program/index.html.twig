@@ -7,17 +7,26 @@
 
 {% for program in programs %}
     <article>
-        <div class="line"><h2>{{ program.title }}</h2><h2 class="cat">{{ program.category.name|default('Catégorie non disponible') }} </h2></div>
-        <p>{{ program.synopsis }}</p>
-        <a class="fiche" href="{{ path("program_show", { program: program.id }) }}">Voir la fiche</a><a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+        <div class="line"><img src="{{ program.poster }} "><h2>{{ program.title }}</h2><h2 class="cat">{{ program.category.name|default('Catégorie non disponible') }}</h2></div>
+        <p class="synopsis">{{ program.synopsis }}</p>
+        
+        <a class="fiche" href="{{ path("program_show", { program: program.id }) }}">Voir la fiche</a>
+        <div class="links">
+        <a class="trailer" href="{{path('program_show_trailer', { id: program.id }) }}">Bande annonce</a>
+        <a class="trailer" href="{{path('program_show_trailer1', {id: program.id }) }} ">Bande annonce 2</a>
+        <a class="trailer" href="{{path('user_index') }} ">Lien externe à program</a>
+        </div>
+        <div class ="mod"><a href="{{ path('program_edit', {'id': program.id}) }}">Modifier</a></div>
 
     {{ include('program/_delete_form.html.twig') }}</p>
-    
+
+     
 {% else %}
     Aucune série trouvé.
-    </article>
+    
     {% endfor %}
-
+   
+</article>
     <a class="retour" href="{{path('app_index') }}">
         retour à l'accueil
         </a>

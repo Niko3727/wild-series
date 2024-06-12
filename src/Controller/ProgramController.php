@@ -35,7 +35,7 @@ class ProgramController extends AbstractController
         $form = $this->createForm(ProgramType::class, $program);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager->persist($program);
             $entityManager->flush();
@@ -113,4 +113,29 @@ class ProgramController extends AbstractController
 
         return $this->redirectToRoute('program_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/trailer', name: 'show_trailer')]
+    public function showTrailer(Program $program): Response 
+    {
+        if (!$program) {
+            throw $this->createNotFoundException(
+                'No program with id : '.$id.' found in program\'s table.'
+            );
+        }
+
+        return $this->render ('program/show_trailer.html.twig', ['program' => $program]
+        );
+
+    }
+
+    #[Route('/{id}/trailer1', name: 'show_trailer1')]
+    public function showTrailer1(Program $program): Response 
+    {
+        
+        return $this->render ('program/show_trailer1.html.twig', ['program' => $program]
+        );
+
+    }
+
 }
+
