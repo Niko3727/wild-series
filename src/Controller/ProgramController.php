@@ -15,12 +15,16 @@ use App\Form\ProgramType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
+
+
+
 #[Route('/program', name: 'program_')]
 class ProgramController extends AbstractController
 {
     #[Route('/', name: 'index')]
     public function index(ProgramRepository $programRepository): Response 
     {
+  
         $programs = $programRepository->findAll();
         
         return $this->render ('program/index.html.twig', ['programs' => $programs]
@@ -39,6 +43,8 @@ class ProgramController extends AbstractController
 
             $entityManager->persist($program);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Le program à bien été créer');
 
             return $this->redirectToRoute('program_index');
 
@@ -94,6 +100,9 @@ class ProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            
+        $this->addFlash('success', 'Le program à bien été bien modifié');
+
             return $this->redirectToRoute('program_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -109,6 +118,10 @@ class ProgramController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->getPayload()->get('_token'))) {
             $entityManager->remove($program);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'Le program à été supprimé');
+
+            
         }
 
         return $this->redirectToRoute('program_index', [], Response::HTTP_SEE_OTHER);
