@@ -7,9 +7,9 @@
 
 {% for program in programs %}
     <article>
-        <div class="line"><img src="{{ program.poster }} "><h2>{{ program.title }}</h2><h2 class="cat">{{ program.category.name|default('Catégorie non disponible') }}</h2></div>
-        <p class="synopsis">{{ program.synopsis }}</p>
+        <div class="line"><img src="{{ program.poster }} "><h2>{{ program.title }}</h2><h2 class="cat"><a href="{{ path('category_show', { category: program.category.id }) }}"> {{ program.category.name|default('categorie non disponible') }}</a></h2></div>
         
+        <p class="synopsis">{{ program.synopsis }}</p>
         <a class="fiche" href="{{ path("program_show", { program: program.id }) }}">Voir la fiche</a>
         <div class="links">
         <a class="trailer" href="{{path('program_show_trailer', { id: program.id }) }}">Bande annonce</a>
@@ -33,3 +33,8 @@
 {% endblock %}
 
 {# {{loop.index}} #}
+
+ {# <a href="{{ path('category_show', { category: category.id }) }}">{{ program.category.name|default('Aucune catégorie attribuée') }}</a> #}
+
+ {# <a href="/category/{{ program.category.id }}">{{ program.category.name|default('Aucune catégorie attribuée') }}</a> #}
+
