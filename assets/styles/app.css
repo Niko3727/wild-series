@@ -98,9 +98,10 @@ a {
 }
 
 article {    /* background-color: #3a3a31; */
-    height: 18rem;
+    height: auto;
     width: 50rem;
     background-color: rgba(19, 20, 20, 0.658);
+    margin-top: 1rem;
 
     
 }
@@ -130,7 +131,7 @@ font-size: 1rem;
 .retour{
     display: flex;
     justify-content: center;
-    margin-top: 9rem;
+    margin-top: 1rem;
 }
 
 button.btn {
@@ -160,8 +161,8 @@ button.btn {
 }
 
 img, svg {
-    height: 100px;
-    width: 75px;
+    height: 150px;
+    width: 110px;
 }
 
 .trailer {
@@ -182,8 +183,17 @@ img, svg {
 .synopsis {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    margin-top: 1rem;
+    background-color: #070707d8;
+    color: rgb(226, 221, 221);
 }
 
 .links {
-    margin-top: 0.2rem;
+    margin-top: 3rem;
+}
+
+.separation {
+    background-color: #7a0202;
+    height: 1rem;
+    margin-bottom: 1rem;
 }

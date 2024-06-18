@@ -25,7 +25,7 @@ class Category
     #[ORM\Column(length: 255)] 
     #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
     #[Assert\Length(max: 255, maxMessage: 'La catégorie saisie {{ value }} et trop longue, elle ne devrait pas dépasser {{ limit }} caractères',)]
-    #[Assert\Length(min: 10, minMessage: 'La catégorie saisie {{ value }} et trop courte, elle ne devrait avoir {{ limit }} caractères',)]
+    #[Assert\Length(min: 5, minMessage: 'La catégorie saisie {{ value }} et trop courte, elle ne devrait avoir {{ limit }} caractères',)]
 
     private ?string $name = null;
 
