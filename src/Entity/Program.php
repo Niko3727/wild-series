@@ -24,7 +24,7 @@ class Program
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Ne me laisse pas vide s\'il te plait')]
-    #[Assert\Length(max: 255, maxMessage: 'Le titre du program saisie {{ value }} et trop long, il ne devrait pas dépasser {{ limit }} caractères', min:10,
+    #[Assert\Length(max: 255, maxMessage: 'Le titre du program saisie {{ value }} et trop long, il ne devrait pas dépasser {{ limit }} caractères', min:5,
     minMessage: 'Le titre du program saisie {{ value }} et trop courte, il ne devrait avoir {{ limit }} caractères'
     )]
     private ?string $title = null;
