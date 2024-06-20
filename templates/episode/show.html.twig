@@ -22,13 +22,18 @@
             <tr>
                 <th>Number</th>
                 <td>{{ episode.number }}</td>
+                </tr>
+                <tr>
+                <th>Serie4</th>
+                   <td>{{ season.episode.program.title }}</td>
+
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('app_episode_index') }}">back to list</a>
 
-    <a href="{{ path('app_episode_edit', {'id': episode.id}) }}">edit</a>
+    <a href="{{ path('app_episode_edit', {'slug': episode.slug}) }}">edit</a>
 
     {{ include('episode/_delete_form.html.twig') }}
 {% endblock %}

@@ -12,7 +12,9 @@
                 <th>Title</th>
                 <th>Synopsis</th>
                 <th>Number</th>
-                <th>actions</th>
+                <th>serie</th>
+                <th>action</th>
+
             </tr>
         </thead>
         <tbody>
@@ -22,9 +24,10 @@
                 <td>{{ episode.title }}</td>
                 <td>{{ episode.synopsis }}</td>
                 <td>{{ episode.number }}</td>
+                <td>{{ episode.season.program.title }}
                 <td>
-                    <a href="{{ path('app_episode_show', {'id': episode.id}) }}">show</a>
-                    <a href="{{ path('app_episode_edit', {'id': episode.id}) }}">edit</a>
+                    <a href="{{ path('app_episode_show', {'slug': episode.slug}) }}">show</a>
+                    <a href="{{ path('app_episode_edit', {'slug': episode.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

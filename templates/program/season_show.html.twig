@@ -4,14 +4,14 @@
 
 {% block body %}
 
-    
+   L'intégrale de la saison {{season.number}} à une estimation de {{seasonDuration.hours}} Heures {{seasonDuration.minutes}} Minutes.
     {% for episode in season.episodes %}
         <p>Titre :  {{ episode.title }} <p>
         <p>Description : {{ episode.synopsis }} <p>
-        <a href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episode.id }) }}">Information sur l'épisode {{ episode.number}}</a>
+        <a href="{{ path("program_episode_show", { program_slug: program.slug, number: season.number, episode_slug: episode.slug }) }}">Information sur l'épisode {{ episode.number}} - temps estimé : {{ episode.duration }} minutes</a>
         {% endfor %}
 
-    <p><a href="{{ path("program_show", { program: program.id }) }}">
+    <p><a href="{{ path("program_show", { slug: program.slug }) }}">
         Retour à la liste des saisons.
     </a></p>
 {% endblock %}
