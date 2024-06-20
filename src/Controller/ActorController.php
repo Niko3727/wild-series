@@ -9,7 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\ActorRepository;
-use App\Form\ActorType; //Cette ligne permet d'afficher la route. 
+use App\Form\ActorType;
+use Symfony\Component\String\Slugger\SluggerInterface;
+ //Cette ligne permet d'afficher la route. 
 
 #[Route('/actor', name: 'actor_')]
 class ActorController extends AbstractController
@@ -25,10 +27,12 @@ class ActorController extends AbstractController
 
     }
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $actor = new Actor();
         $form = $this->createForm(ActorType::class, $actor);
+        $slug = $slugger->slug($actor->getName());
+        $program->setSlug($slug);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -50,7 +54,7 @@ class ActorController extends AbstractController
 
 
 
-    #[Route('/{id}', methods:['GET'], requirements: ['id'=>'\d+'], name: 'show')]
+    #[Route('/{slug}', methods:['GET'], requirements: ['id'=>'\d+'], name: 'show')]
     public function show(Actor $actor): Response
     {
     
@@ -59,13 +63,15 @@ class ActorController extends AbstractController
 
     }
 
-    #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Actor $actor, EntityManagerInterface $entityManager): Response
+    #[Route('/{slug}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Actor $actor, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ActorType::class, $actor);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugger->slug($actor->getName());
+            $program->setSlug($slug);
             $entityManager->flush();
 
             $this->addFlash('success', 'L\'acteur à bien été modifié');
