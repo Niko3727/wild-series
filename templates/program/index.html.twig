@@ -7,9 +7,10 @@
 
 {% for program in programs %}
     <article>
-        <div class="line"><img src="{{ program.poster }} "><h2>{{ program.title }}</h2><h2 class="cat"><a href="{{ path('category_show', { slug: program.category.slug }) }}"> {{ program.category.name|default('categorie non disponible') }}</a></h2></div>
+        <div class="line"><img src="{{ program.poster }} "><h2>{{ program.title }}</h2><p>{{ times[program.id]['days'] }} jours {{ times[program.id]['hours'] }} heures {{ times[program.id]['minutes'] }} minutes<p><h2 class="cat"><a href="{{ path('category_show', { slug: program.category.slug }) }}"> {{ program.category.name|default('categorie non disponible') }}</a></h2></div>
         
         <p class="synopsis">{{ program.synopsis }}</p>
+        
         <a class="fiche" href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
         <div class="links">
         <a class="trailer" href="{{path('program_show_trailer', { id: program.id }) }}">Bande annonce</a>

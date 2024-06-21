@@ -1,0 +1,46 @@
+{% extends '/email/template_email.html.twig' %}
+
+{% block title %} Wild Series {% endblock %}
+
+{% block body %}
+
+<style>
+body {
+    background-color: #222222;
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
+            color: white;
+}
+
+h1 {
+    color: #a8011c;
+}
+
+.img{
+    height: 400px;
+    width: 250px;
+}
+
+.email_name {
+    font-size: 1rem;
+}
+
+a {
+    color:white;
+}
+</style>
+
+<p class="email_name">Hey Niko, nous avons une bonne nouvelle !</p>
+<h1> Nouvel saison de {{ season.program.title }} maintenant disponible !</h1>
+
+<p><img class ="img" src="{{ season.program.poster }}" alt="{{ season.program.title }} "></p>
+
+<p>Saison : {{ season.number }} : Disponible dans le Wild series </p>
+
+<p>Description de la saison</p>
+<p>{{season.description }}</p>
+
+<p><a href="http://127.0.0.1:8000/program/{{ season.program.title }}/seasons/{{ season.number }}">Information sur la saison</a></p>
+
+{% endblock %}
