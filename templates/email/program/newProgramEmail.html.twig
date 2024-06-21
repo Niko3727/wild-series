@@ -1,0 +1,36 @@
+{% extends '/email/template_email.html.twig' %}
+
+{% block title %} Wild Series {% endblock %}
+
+{% block body %} 
+
+<style>
+body {
+    background-color: #222222;
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
+            color: white;
+}
+
+h1 {
+    color: #a8011c;
+}
+
+.img{
+    height: 400px;
+    width: 250px;
+}
+
+.email_name {
+    font-size: 0.5rem;
+}
+</style>
+
+<p class="email_name">Hey Niko, nous avons une bonne nouvelle !</p>
+<h1> Nouvelle série !</h1><center>
+<p><img class ="img" src="{{ program.poster }}" alt="{{ program.title }} "></p>
+<p>{{ program.title }}</p>
+<p>Synopsis</p>
+<p>{{program.synopsis }}</p>
+{% endblock %}

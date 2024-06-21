@@ -18,22 +18,29 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use App\Service\ProgramDuration;
 use App\Service\SeasonDuration;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 
 #[Route('/program', name: 'program_')]
 class ProgramController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index( ProgramRepository $programRepository): Response 
+    public function index( ProgramRepository $programRepository, ProgramDuration $programDuration): Response 
     {
         $programs = $programRepository->findAll();
+
+        $times = [];
+        foreach($programs as $program) {
+            $times[$program->getId()] = $programDuration ->calculate($program);
+        }
         
-        return $this->render ('program/index.html.twig', ['programs' => $programs]
+        return $this->render ('program/index.html.twig', ['programs' => $programs, 'programDuration' => $programDuration, 'times' => $times]
         );
     }
 
     #[Route('/new', name: 'new')]
-    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response 
+    public function new(Request $request, MailerInterface $mailer, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response 
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
@@ -45,6 +52,16 @@ class ProgramController extends AbstractController
 
             $entityManager->persist($program);
             $entityManager->flush();
+
+            $email = (new Email())
+                    ->from($this->getParameter('mailer_from'))
+                    ->to('niko__@live.fr')
+                    ->subject('Une nouvelle série vient d\'être publié, bon visionnage !')
+                    ->html($this->renderView('/email/program/newProgramEmail.html.twig', ['program' => $program]));
+
+            $mailer->send($email);
+
+
 
             $this->addFlash('success', 'Le program à bien été créer');
 
@@ -91,6 +108,8 @@ class ProgramController extends AbstractController
         SluggerInterface $slugger
         ): Response {
     
+
+
 
         return $this->render ('program/episode_show.html.twig', ['program' => $program, 'season' => $season, 'episode' => $episode]
         );

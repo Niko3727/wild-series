@@ -3,8 +3,9 @@
 {% block title %} All category {% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
+{{ form_start(form.title) }}
 {{ form_widget(form) }}
 <button type="submit">Ajouté un program</button>
 {{ form_end(form) }}
+
 {% endblock %}
